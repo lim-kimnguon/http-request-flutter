@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http_request/services/api_service.dart';
+import 'package:intl/intl.dart';
 
 import '../models/user.dart';
 
@@ -51,8 +52,9 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.only(top: 15, left: 20),
               child: Column(
                 children: [
-                  Text(users![index].userId.toString()),
-                  Text(users![index].title)
+                  Text(users![index].username),
+                  Text(users![index].email),
+                  Text(users![index].createdAt.toString())
                 ],
               ),
             );

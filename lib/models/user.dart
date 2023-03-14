@@ -4,6 +4,8 @@
 
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
+
 List<User> userFromJson(String str) =>
     List<User>.from(json.decode(str).map((x) => User.fromJson(x)));
 
@@ -12,20 +14,26 @@ String userToJson(List<User> data) =>
 
 class User {
   User({
-    required this.userId,
-    required this.title,
+    required this.username,
+    required this.email,
+    required this.createdAt,
   });
 
-  int userId;
-  String title;
+
+  String username;
+  String email;
+  DateTime createdAt;
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-        userId: json["userId"],
-        title: json["title"],
+
+        username: json["username"],
+        email: json["email"],
+        createdAt: DateTime.parse(json["created_at"]),
       );
 
   Map<String, dynamic> toJson() => {
-        "userId": userId,
-        "title": title,
+        "username": username,
+        "email": email,
+        "created_at": createdAt.toIso8601String(),
       };
 }
